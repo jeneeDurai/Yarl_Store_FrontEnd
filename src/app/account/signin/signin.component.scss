@@ -1,0 +1,55 @@
+
+
+    input[type=text],input[type=email],input[type=password]{
+        border-radius: 20px;
+        border: 1px solid #eaeaea;
+        height: 40px;
+        padding-left:15px;
+    }
+
+    .sub-p
+    {
+        margin-bottom: 3%;
+        color: #6f6f6f;
+    }
+
+    .form-group
+    {
+        margin-bottom: 5% !important;
+    }
+
+
+
+.form-group {
+    position: relative;
+    margin-bottom: 1.5rem;
+  }
+  
+  .form-control-placeholder {
+    position: absolute;
+    top: 0;
+    padding: 10px 0 0 15px;
+    transition: all 200ms;
+    opacity: 0.5;
+  }
+  
+  .form-control:focus + .form-control-placeholder,
+  .form-control:valid + .form-control-placeholder {
+    font-size: 100%;
+    transform: translate3d(0, -115%, 0);
+    opacity: 1;
+    color: #000033;
+  }
+  
+
+  .active-line
+  {
+    top: 101px;
+  }
+
+  .btn-default
+  {
+    min-width: 200px !important;
+  }
+
+

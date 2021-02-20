@@ -1,0 +1,45 @@
+<section class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <h3>Deals Of The Day <span style="font-size: 15px; margin-left: 2%;">See More..</span></h3>
+            <hr>
+            <hr class="active-line" />
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-md-12 deals-products-list">
+            <swiper [config]="config">
+                <div class="swiper-wrapper">
+                    <div class="swiper-slide pro" *ngFor="let product_detail of products_details">
+                        <div class="content-overlay"></div>
+                        <div class="product">
+                            <h4>{{product_detail.product.product_name}}</h4>
+                            <p> {{product_detail.product.price | number:'1.2-2'}} <span
+                                    [style.float]="this.currencyService.currenyPosition">
+                                    {{this.currencyService.currencyFormat}} &nbsp;</span> </p>
+                            <a [routerLink]="['/product-detail/', product_detail.product.id]">
+                                <img [src]="product_detail.images[0].image_url" class="image img-responsive" />
+                            </a>
+                            <div class="header-icon-con">
+                                <a [routerLink]="['/product-detail/', product_detail.product.id]" class="product-icn-dt"
+                                    style="margin-right: 2%; margin-right: 15px;"> <i class="fa fa-eye"
+                                        aria-hidden="true"> </i></a>
+
+                            </div>
+
+                            <div class="header-icon-con">
+                                <a (click)="addToWishList(product_detail.product)" class="product-icn-dt"> <i
+                                        class="fa fa-heart-o" aria-hidden="true"> </i></a>
+                            </div>
+                            <a type="button" class="btn btn-warning btn-sm add-to-cart-btn" style="float:right;"
+                                (click)="addToCart(product_detail.product)"><i class="fa fa-cart-plus"
+                                    aria-hidden="true"></i> Add to cart </a>
+                        </div>
+                    </div>
+                </div>
+            </swiper>
+        </div>
+    </div>
+</section>

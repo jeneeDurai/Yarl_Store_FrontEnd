@@ -1,0 +1,87 @@
+<app-header></app-header>
+
+<div class="container-fluid">
+  <div class="col-md-12">
+    <h1>{{name}}</h1>
+    <div class="col-md-6">
+      <div class="profile-picture">
+        <img [src]="" width="100%" />
+      </div>
+    </div>
+
+    <div class="col-md-6 profile-details">
+      <form [formGroup]="profileForm">
+        <div class="row">
+          <div class="form-group">
+            <input type="text" id="name" class="form-control" formControlName="name" required>
+            <label class="form-control-placeholder" for="name">Name *</label>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="form-group">
+            <input type="text" id="email" class="form-control" formControlName="email" required>
+            <label class="form-control-placeholder" for="name">Email *</label>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="form-group">
+            <input type="text" id="contact_number" class="form-control" formControlName="contact_number" required>
+            <label class="form-control-placeholder" for="name">Contact Number *</label>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="form-group">
+            <input type="text" id="address" class="form-control" formControlName="address" required>
+            <label class="form-control-placeholder" for="name">Address *</label>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6" style="padding-left: 0;">
+            <div class="form-group">
+              <input type="text" id="country" class="form-control" formControlName="country" required>
+              <label class="form-control-placeholder" for="name">Country *</label>
+            </div>
+          </div>
+
+          <div class="col-md-6" style="padding-right: 0;">
+            <div class="form-group">
+              <input type="text" id="country" class="form-control" formControlName="country" required>
+              <label class="form-control-placeholder" for="name">Country *</label>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6" style="padding-left: 0;">
+            <div class="form-group">
+              <input type="text" id="city" class="form-control" formControlName="city" required>
+              <label class="form-control-placeholder" for="name">City *</label>
+            </div>
+          </div>
+
+          <div class="col-md-6" style="padding-right: 0;">
+            <div class="form-group">
+              <input type="text" id="state" class="form-control" formControlName="state" required>
+              <label class="form-control-placeholder" for="name">State *</label>
+            </div>
+          </div>
+        </div>
+
+
+        <div class="row">
+          <div class="form-group">
+            <input type="text" id="postal_code" class="form-control" formControlName="postal_code" required>
+            <label class="form-control-placeholder" for="name">Postal Code *</label>
+          </div>
+        </div>
+      </form>
+    </div>
+
+  </div>
+</div>
+
+<app-footer></app-footer>

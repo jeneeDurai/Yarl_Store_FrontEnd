@@ -1,0 +1,29 @@
+.container-fluid
+{
+    padding-left: 55px;
+    padding-right: 55px;
+    background-color: #fff;
+
+    .col-md-6
+    {
+        padding: 2% 8%;
+
+    }
+
+    
+    .vl {
+        border-left: 1px solid #e8e8e8;
+        height: 640px;
+        position: absolute;
+        left: 50%;
+        margin-top: 3%;    
+      }
+
+
+      .btn-default
+      {
+        min-width: 200px !important;
+      }
+
+}
+

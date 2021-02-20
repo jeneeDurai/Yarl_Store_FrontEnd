@@ -1,0 +1,16 @@
+.crop {
+  overflow: hidden;
+  color: #ffc40c;
+}
+div {
+  cursor: pointer;
+}
+
+.star-rating-filled {
+  fill: #ffc40c;
+}
+
+.star-rating-blank {
+  fill: rgb(218, 214, 214);
+}
+

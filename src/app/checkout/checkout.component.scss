@@ -1,0 +1,87 @@
+.container-fluid
+{
+    padding-left: 55px;
+    padding-right: 55px;
+    padding-bottom: 2%;
+    padding-top: 2%;
+
+    background-color: #fff;
+    
+}
+
+.form-group {
+    margin-top: 1%;
+    margin-bottom: 1%;
+    position: relative;
+    margin-bottom: 1.5rem;
+  }
+  
+  .form-control-placeholder {
+    position: absolute;
+    top: 0;
+    padding: 10px 0 0 15px;
+    transition: all 200ms;
+    opacity: 0.5;
+  }
+  
+  .form-control:focus + .form-control-placeholder,
+  .form-control:valid + .form-control-placeholder {
+    font-size: 100%;
+    transform: translate3d(0, -115%, 0);
+    opacity: 1;
+    color: #000033;
+  }
+  
+
+ input[type=text],input[type=email],input[type=password]{
+        border-radius: 20px;
+        border: 1px solid #eaeaea;
+        height: 40px;
+        padding-left:15px;
+}
+
+
+.btn-default
+{
+    min-width: 200px;
+}
+
+.panel-body
+{
+    padding-top: 2%;
+    padding-bottom: 2%;
+}
+
+.accunt-details
+{
+  .panel
+  {
+      .panel-body
+      {
+          .row
+          {
+              margin-top: 2%;
+              margin-bottom: 3%;
+          }
+      }
+  }
+}
+
+input[type="checkbox"],
+input[type="radio"] {
+  &:focus {
+    + label {
+      &:before {
+      }
+    }
+  }
+  + label {
+    padding: 0 0 0 2em;
+  }
+}
+
+
+.panel-heading
+{
+  background: #000033 !important; color: #fff;
+}

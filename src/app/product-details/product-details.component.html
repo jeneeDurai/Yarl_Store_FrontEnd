@@ -1,0 +1,183 @@
+<app-header></app-header>
+
+<div class="container-fluid">
+    <div class="col-md-12 p-0 product-image-container">
+
+        <div class="product-thump">
+            <ul>
+                <li *ngFor="let img of images" (click)="dispImage(img.image_url)" [ngClass]="{'active-img': img.image_url === image.image_url}"><img [src]="img.image_url" width="100%"/></li>
+            </ul>
+        </div>
+        <div class="col-md-6 product-image">
+                        <img [src]="image" class="main-img" style="margin-left: 38%; margin-top:2%" >
+
+        </div>
+        <div class="col-md-6">
+            <h1>{{ products_details['product_name'] }}</h1>
+            <p *ngIf="this.brands">By : {{ this.brands.brands_name}}</p>
+            <p>Available : <span class="instock" *ngIf="products_details['quantity'] > 0"> In Stock</span></p>
+                <!-- <ngx-star-rating [total]="5" [filledColor]="'#ffc40c'" value="2"></ngx-star-rating> -->
+
+                    <pm-star [rating]="products_details['points']"  [ratingKind]="'productRating'"></pm-star>
+
+
+            <hr style="margin: 0;">
+
+            <p>
+                {{ products_details['product_description'] }}
+            </p>
+
+            <hr style="margin: 0;">
+
+
+            <!-- <select class="form-control select-product-option" *ngIf="options.product_option_value">
+                <option  *ngFor="let opt of options.product_option_value">{{opt.optio_value.option_name}}</option>
+            </select> -->
+            <h3 class="disc-price">Rs 200.00</h3>
+            <h1> {{products_details['price'] | number:'1.2-2'}} <span [style.float]="this.currencyService.currenyPosition"> {{this.currencyService.currencyFormat}} &nbsp;</span></h1>
+
+            <br>
+            <!-- <div class="qnty">
+                <input type="number" min="1" max="20" value="1" class="form-control"/>
+            </div> -->
+
+            <div class="qnty" style="width: 150px;">
+                <button class="btn btn-circle float-left" style="float: left; border-radius: 55% !important;" (click)="decreaseQnty(products_details['orderedQnty'])">-</button>
+
+                <input type="text" min="0" max="10" value="0"  [(ngModel)]="products_details['orderedQnty']" class="form-control qnty" style="float: left;width: 80px;border-radius: 55px;margin-left: 2px;"  />
+                <button class="btn btn-circle float-left" (click)="increaseQnty(products_details['orderedQnty'])" style="float: right; border-radius: 55% !important;">+</button>
+
+            </div>
+
+            <div>
+                <button type="button" class="add-to-cart btn" (click)="addProductToCart(products_details)"><i class="fa fa-shopping-basket" style="
+                    float: left;
+                    margin-left: 10%;
+                    margin-top: 3%;
+                " aria-hidden="true"></i>  Add to cart</button>
+                <button class="add-to-cart whislist-btn btn" (click)="addProductToWishList(products_details)"><i class="fa fa-heart" aria-hidden="true" style="
+                    float: left;
+                    margin-left: 10%;
+                    margin-top: 3%;
+                " ></i>
+               My List
+            </button>
+
+            </div>
+
+            <hr>
+
+        </div>
+    </div>
+
+
+    <ul class="nav nav-pills">
+        <li [ngClass]="(activeTab=='desc')?'active':''"><a data-toggle="pill" (click)="tabNavigator('desc')">Description</a></li>
+        <li [ngClass]="(activeTab=='review')?'active':''"><a data-toggle="pill" (click)="tabNavigator('review')">Reviews</a></li>
+      </ul>
+
+      <div class="tab-content">
+        <div id="home" class="tab-pane fade" [ngClass]="(activeTab=='desc')?'in active':'fade'">
+          <h3>Description</h3>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+        </div>
+        <div id="menu1" class="tab-pane fade" [ngClass]="(activeTab=='review')?'in active':'fade'">
+          <h3>Reviews</h3>
+          <form [formGroup]="reviewForm">
+
+            <div class="form-group">
+                <label class="form-control-placeholder" for="name">Name *</label>
+                <input type="text" id="name" class="form-control" formControlName="name" required>
+            </div>
+
+            <div class="form-group">
+                <label class="form-control-placeholder" for="name">Comments*</label>
+                <textarea class="form-control" formControlName="comments"></textarea>
+            </div>
+
+            <div class="formGroup" >
+                <label class="form-control-placeholder">Rating *</label>
+                <!-- <ngx-star-rating  formControlName="rating" [filledColor]="'#ffc40c'" [id]="'rating'"></ngx-star-rating> -->
+                <!-- <ngx-star-rating formControlName="rating1" [id]="'rating'"></ngx-star-rating> -->
+                <div style="display: flex;">
+                  <ng-container *ngFor="let star of stars">
+                    <pm-star (ratingEnter)="onRateEnter($event)" (ratingLeave)="onRateLeave()" (ratingClicked)="onRateClicked($event)" [rating]="rating || hoverState" [starId]="star" [ratingKind]="'userRating'"></pm-star>
+                  </ng-container>
+                </div>
+
+
+            </div>
+
+            <div class="form-group">
+                <button class="btn btn-default btn-submit" (click)="onSubmitReview()">Submit</button>
+            </div>
+
+          </form>
+        </div>
+      </div>
+
+
+
+    <div class="col-md-12 p-0">
+        <div class="row">
+            <div class="col-md-12 title">
+                <h3>Related Products</h3>
+                <hr>
+                <hr class="active-line"/>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-md-12  deals-products-list" style="padding-bottom: 2%;">
+                    <!-- <swiper  [config]="config">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide pro" *ngFor="let product of prodcts">
+                                <div class="content-overlay"></div>
+                                <div class="product">
+                                    <p>{{product.name}}</p>
+                                    <h4>{{product.head}}</h4>
+                                    <p>Rs 400.00</p>
+                                    <img src="./../../assets/images/{{product.image}}" class="image" width="200" height="200"/>
+                                    <div class="content-details">
+                                        <a [routerLink]="['/product-detail/', 2]"> <i class="fa fa-eye" aria-hidden="true"> </i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </swiper> -->
+
+
+                    <swiper  [config]="config">
+                        <div class="swiper-wrapper">
+                            <div class="swiper-slide pro" *ngFor="let product of products">
+                                <div class="content-overlay"></div>
+                                <div class="product">
+                                    <h4>{{product.name}}</h4>
+                                    <p> {{product.price | number:'1.2-2'}} <span [style.float]="this.currencyService.currenyPosition"> {{this.currencyService.currencyFormat}} &nbsp;</span> </p>
+                                    <a  [routerLink]="['/product-detail/', product.id]">
+                                        <img src="./../../assets/images/{{product.image}}" class="image img-responsive" />
+                                    </a>
+                                    <div class="header-icon-con">
+                                        <a  [routerLink]="['/product-detail/', product.id]" class="product-icn-dt" style="margin-right: 2%; margin-right: 15px;"> <i class="fa fa-eye" aria-hidden="true"> </i></a>
+
+                                    </div>
+
+                                    <div class="header-icon-con">
+                                        <a    class="product-icn-dt"> <i class="fa fa-heart-o" aria-hidden="true"> </i></a>
+                                    </div>
+                                    <a type="button" class="btn btn-warning btn-sm add-to-cart-btn" style="float:right;" ><i class="fa fa-cart-plus" aria-hidden="true"></i> Add to cart </a>
+                                </div>
+                            </div>
+                        </div>
+                    </swiper>
+
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+
+<app-footer></app-footer>

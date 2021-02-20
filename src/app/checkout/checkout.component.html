@@ -1,0 +1,342 @@
+<app-header></app-header>
+
+<div class="container-fluid">
+  <div class="col-md-12 p-0">
+    <h2>Checkout</h2>
+
+
+<form  [formGroup]="CheckoutForm" >
+    <div class="col-md-8">
+        <aw-wizard>
+            <aw-wizard-step stepTitle="Account Details">
+                <div class="col-md-12 p-0" *ngIf="!this.userService.isLogged">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">Login</div>
+                        <div class="panel-body">
+                            <div class="col-md-4">
+                                    <input type="text" id="name" class="form-control" required>
+                                    <label class="form-control-placeholder" for="name">Email Address *</label>
+                            </div>
+
+                            <div class="col-md-4">
+                                    <input type="text" id="name" class="form-control" required>
+                                    <label class="form-control-placeholder" for="name">Password *</label>
+                            </div>
+
+
+                            <div class="col-md-4">
+                                <button class="btn btn-default">Login</button>
+                            </div>
+
+                        </div>
+                      </div>
+                </div>
+
+                <hr>
+
+                <div class="col-md-12 p-0 accunt-details">
+                    <div class="panel panel-default">
+                        <div class="panel-heading" style="">Account and Billing Details</div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <input type="text" id="firstName"  formControlName="firstName" class="form-control" required>
+                                    <label class="form-control-placeholder" for="firstName">First Name *</label>
+
+                                    <div class="error-text" *ngIf="f.firstName.touched && f.firstName.invalid">
+                                        <div *ngIf="f.firstName.errors.required">First Name is required.</div>
+                                        <div *ngIf="f.firstName.errors.minlength">Name should be 3 character.</div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <input type="text" id="lastName"  formControlName="lastName" class="form-control" required>
+                                    <label class="form-control-placeholder" for="lastName">Last Name *</label>
+
+                                    <div class="error-text" *ngIf="f.lastName.touched && f.lastName.invalid">
+                                        <div *ngIf="f.lastName.errors.required">Last Name is required.</div>
+                                        <div *ngIf="f.lastName.errors.minlength">Name should be 3 character.</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <input type="text" id="email" formControlName="email" class="form-control" required>
+                                    <label class="form-control-placeholder" for="email">Email *</label>
+
+
+                                    <div class="error-text" *ngIf="f.email.touched && f.email.invalid">
+                                        <div *ngIf="f.email.errors.required">Email is required.</div>
+                                        <div *ngIf="f.email.errors.pattern">Invalid Email.</div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <input type="text" id="contactno" formControlName="contactno" class="form-control" required>
+                                    <label class="form-control-placeholder" for="contactno">Telephone *</label>
+
+                                    <div class="error-text" *ngIf="f.contactno.touched && f.contactno.invalid">
+                                        <div *ngIf="f.contactno.errors.required">Contact No is required.</div>
+                                        <div *ngIf="f.contactno.errors.minlength">Contact No should be 10 character.</div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label  for="name">Country *</label>
+                                    <select class="form-control "  #mySelect  (change)="onChangeConuty(mySelect.value)" style="
+                                    border-radius: 55px;
+                                    height: 40x;
+                                ">
+                                        <option *ngFor="let country of countries" [value]="country.id"> {{country.country_name}}</option>
+                                    </select>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <label  for="name">States *</label>
+                                    <select class="form-control "  #state  (change)="onChangeState(state.value)" style="
+                                    border-radius: 55px;
+                                    height: 40x;
+                                ">
+                                        <option *ngFor="let state of states" [value]="state.id"> {{state.state_name}}</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="row">
+
+                                <div class="col-md-6">
+                                    <input type="text"  id="userIdFirstWay" list="dynmicUserIds"  />
+                                    <datalist id="dynmicUserIds">
+                                       <option *ngFor="let city of cities" [value]="city.city_name">{{city.city_name}}</option>
+                                    </datalist>
+                                    <label class="form-control-placeholder" for="name">City *</label>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <input type="text" id="address1_name" class="form-control" required formControlName="address1">
+                                    <label class="form-control-placeholder" for="address1_name">Address 1  *</label>
+                                </div>
+
+                            </div>
+
+
+
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="checkboxes">
+                                        <input id="delivery_address" type="checkbox" tabindex="1"/><label class="green-background" for="delivery_address">My delivery and billing address are the same.
+                                        </label>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-12">
+                                    <div class="checkboxes">
+                                        <input id="create_an_account" (change)="onChange($event)" type="checkbox" tabindex="1"/><label class="green-background" for="create_an_account">Create an account
+                                        </label>
+                                    </div>
+
+                                    <div class="row" *ngIf="create_an_account">
+                                        <div class="col-md-6">
+                                            <input type="text" id="password" class="form-control" required>
+                                            <label class="form-control-placeholder" for="password">Password  *</label>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <input type="text" id="cpassword" class="form-control" required>
+                                            <label class="form-control-placeholder" for="cpassword">Confirm Password *</label>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                      </div>
+                </div>
+
+              <button type="button" class="btn btn-default" [disabled]="!CheckoutForm.valid"  awNextStep><i class="fa fa-arrow-right" aria-hidden="true"></i>
+                Next Step</button>
+            </aw-wizard-step>
+
+
+
+            <aw-wizard-step stepTitle="Payment Details" awOptionalStep>
+
+            <div class="col-md-12 ">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Payment Method</div>
+                    <div class="panel-body">
+                        <p>Please select the preferred payment method to use on this order</p>
+
+                        <div class="checkboxes" *ngIf="this.currencyService.currencyFormat != 'Rs'">
+                            <input id="cod" name="payment"  value="cod" type="radio" tabindex="1"/>
+                            <label class="green-background" for="cod">Cash on delivery
+                            </label>
+                        </div>
+
+                        <div class="checkboxes">
+                            <input id="card"  name="payment" value="card" type="radio" tabindex="1"/><label class="green-background" for="card">Card Payment
+                            </label>
+                        </div>
+
+                        <p>Add Comments About your order</p>
+                        <textarea class="form-control" style="height: 250px;"></textarea>
+                    </div>
+                </div>
+            </div>
+
+             <div class="col-md-12">
+                <button type="button" class="btn btn-default" awPreviousStep><i class="fa fa-arrow-left" aria-hidden="true"></i>
+                    Go to previous step</button>
+                <button type="button" class="btn btn-default" awNextStep style="margin-left:2%"><i class="fa fa-arrow-right" aria-hidden="true"></i>
+                    Go to next step</button>
+             </div>
+            </aw-wizard-step>
+
+
+            <aw-wizard-step stepTitle="Delivery Details">
+                <div class="col-md-12 accunt-details">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">Delivery Details</div>
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <input type="text" id="name" class="form-control" required>
+                                    <label class="form-control-placeholder" for="name">Address 1  *</label>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <input type="text" id="name" class="form-control" required>
+                                    <label class="form-control-placeholder" for="name">No </label>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <input type="text" id="name" class="form-control" required>
+                                    <label class="form-control-placeholder" for="name">Contact Number *</label>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <input type="text" id="name" class="form-control" required>
+                                    <label class="form-control-placeholder" for="name">Country *</label>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <input type="text" id="name" class="form-control" required>
+                                    <label class="form-control-placeholder" for="name">State *</label>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <input type="text" id="name" class="form-control" required>
+                                    <label class="form-control-placeholder" for="name">City *</label>
+                                </div>
+                            </div>
+
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <input
+                                    type="text"
+                                    placeholder="Choose date"
+                                    class="form-control"
+                                    bsDatepicker
+                                    [bsConfig]="{ isAnimated: true }">
+                                </div>
+
+                                <div class="col-md-6">
+                                    <input type="text" placeholder="12hr format (default settings)" class="form-control" aria-label="12hr format" [ngxTimepicker]="default" >
+                                    <ngx-material-timepicker #default></ngx-material-timepicker>
+                                </div>
+                            </div>
+
+
+
+
+
+                        </div>
+                        </div>
+                    </div>
+
+                <div class="col-md-12">
+                    <button type="button"  class="btn btn-default" awPreviousStep><i class="fa fa-arrow-left" aria-hidden="true"></i>
+                        Previous Step</button>
+                    <button type="button" class="btn btn-default" style="margin-left:2%"><i class="fa fa-check-square-o" aria-hidden="true"></i>
+                        Finish</button>
+                </div>
+            </aw-wizard-step>
+          </aw-wizard>
+    </div>
+
+
+    <div class="col-md-4" style="    margin-top: 60px;">
+        <div class="panel panel-default">
+            <div class="panel-heading">Cart Summary</div>
+                <div class="panel-body" style="padding: 0; padding-right: 0;">
+                    <table class="table table-responsive" style="margin-bottom: 0;">
+                        <thead>
+                            <tr style="background: #ddd;">
+                                <th width="5%"></th>
+                            <th width="35%">Product</th>
+                            <th width="15%">Price</th>
+                            <th width="5%">Quantity</th>
+                            <th width="20%">Cart Total</th>
+                            </tr>
+
+                        </thead>
+
+                        <tbody>
+                            <tr *ngFor="let product of cartProducts;">
+                                <td><i class="fa fa-times" aria-hidden="true" ></i></td>
+                                <td class="product-details">
+                                    <img *ngIf="product.images" [src]="product.images[0].image_url" width="50" height="50" style="float: left;"/>
+                                    <span>{{product.product_name}}</span>
+                                </td>
+                                <td>{{product.price | currency:'Rs '}}</td>
+                                <td>
+                                    {{product.orderedQnty}}
+
+                                </td>
+                                <td>{{product.orderedQnty * product.price  | currency:'Rs '}}</td>
+                            </tr>
+
+
+                            <tr style="background-color: #f5f5f5;">
+                                <td></td>
+                                <td colspan="3"><h4>Discount</h4></td>
+                                <td>
+                                    <h4>{{totalPrice | currency:'Rs '}}</h4>
+                                </td>
+                            </tr>
+
+                            <tr style="background-color: #f5f5f5;">
+                                <td></td>
+                                <td colspan="3"><h4>Total</h4></td>
+                                <td>
+                                    <h4>{{totalPrice | currency:'Rs '}}</h4>
+                                </td>
+                            </tr>
+
+                            <tr style="background-color: #f5f5f5;">
+                                <td></td>
+                                <td colspan="3"><h4>Coupon Code</h4></td>
+                                <td>
+                                    <h4><input type="text" class="form-control"/></h4>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+
+                </div>
+            </div>
+        </div>
+</form>
+</div>
+
+</div>
+
+<app-footer></app-footer>

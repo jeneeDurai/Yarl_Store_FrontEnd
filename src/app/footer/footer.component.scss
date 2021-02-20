@@ -1,0 +1,118 @@
+footer
+{
+    width: 100%;
+    background: #000033;
+    color: #fff;
+
+    // padding-top: 2%;
+    padding-bottom: 2%;
+
+    .container-fluid
+    {
+        padding-left: 55px;
+        padding-right: 55px;
+    }
+
+    ul
+    {
+        list-style: none;
+        padding: 0;
+
+        li
+        {
+            line-height: 30px;
+            font-size: 13px;
+        }
+    }
+
+    .cards
+    {
+        list-style: none;
+        width: 100%;
+        li
+        {
+            float: left;
+            width: 17%;
+        }
+    }
+    
+    .social-list
+    {
+        list-style: none;
+        width: 100%;
+        float: right;
+        li {
+            float: right;
+            width: 25%;
+        }
+    }
+}
+
+.btn-subscripe
+{
+    background: #a0a0a0;
+    border-radius: 55px !important;
+    color: #000;
+    font-weight: bold;
+    height: 40px;
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.mt-2
+{
+     margin-top: 2%;
+}
+
+
+
+@media only screen and (max-width: 600px) {
+    .container-fluid{
+        .logo{
+            margin-left: 1em;
+        }
+        .social-list{
+            margin-top: 1em;
+        }
+    }
+    
+}
+
+// Medium devices (tablets, 768px and up)
+@media (min-width: 768px) and (max-width: 991.98px) { 
+    .container-fluid{
+        .logo{
+            margin-left: 1em;
+        }
+        .social-list{
+            margin-top: 1em;
+        }
+        .con
+        {
+            width: 30%;
+            float: left;
+        }
+    }
+}
+
+// Large devices (desktops, 992px and up)
+@media (min-width: 992px) and (max-width: 1199.98px) {
+    .container-fluid{
+        .logo{
+            margin-left: 1em;
+        }
+        .social-list{
+            margin-top: 1em;
+        }
+    }
+ }
+
+// Extra large devices (large desktops, 1200px and up)
+@media (min-width: 1200px) { 
+    .con
+{
+    // width: 15%;
+    // float: left;
+}
+}

@@ -1,0 +1,24 @@
+<h3>Login</h3>
+<hr>
+<hr class="active-line">
+<p class="sub-p">Welcome back! Sign in to your account</p>
+<br/>
+
+<form  [formGroup]="LoginForm" >
+
+    <div class="form-group">
+        <input type="text" id="email" class="form-control" formControlName="email" [formControl]="LoginForm.controls['email']" required>
+        <label class="form-control-placeholder" for="email">Email Address *</label>
+    </div>
+
+    <div class="form-group">
+        <input type="password" id="password" class="form-control"  formControlName="password" [formControl]="LoginForm.controls['password']" required>
+        <label class="form-control-placeholder" for="password">Password *</label>
+    </div>
+
+
+    <div class="form-group">
+        <button type="submit" class="btn btn-default" (click)="login()">Login</button>
+    </div>
+
+</form>

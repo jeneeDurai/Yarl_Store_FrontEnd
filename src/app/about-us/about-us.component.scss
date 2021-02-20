@@ -1,0 +1,21 @@
+.container-fluid
+{
+    padding-left: 55px;
+    padding-right: 55px;
+    padding-bottom: 2%;
+    padding-top: 2%;
+    background: #fff;
+    
+}
+
+.about-us-list
+
+{
+    padding: 0;
+    list-style: none;
+
+    li{
+        line-height: 40px;
+        border-bottom: 1px solid #ddd;
+    }
+}
