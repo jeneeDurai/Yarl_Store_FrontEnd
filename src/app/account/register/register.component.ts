@@ -61,11 +61,11 @@ export class RegisterComponent implements OnInit {
     this.userService.register(body).subscribe({
       next: data => {
         console.log("dta is", data)
-        if(data['flash'].class == 'error') {
-          this.notifyService.showError(data['flash'].message, "Error")
+        if(data['success']) {
+          this.notifyService.showSuccess(data['message'], "Success")
         }else
         {
-          this.notifyService.showSuccess(data['flash'].message, "Success")
+          this.notifyService.showError(data['message'], "Error")
         }
       },
       error: error => this.notifyService.showError('There was an error!', error)

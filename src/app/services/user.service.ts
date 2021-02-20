@@ -11,9 +11,9 @@ import {LocalStorageService, SessionStorageService} from 'ngx-webstorage';
 @Injectable()
 export class UserService {
 
-  registerApi = 'http://localhost:5000/register';
-  loginApi = 'http://localhost:5000/login';
-  getProfileApi = 'http://127.0.0.1:5000/user/'
+  registerApi = '/yarl-store-services/register';
+  loginApi = '/yarl-store-services/login';
+  getProfileApi = '/yarl-store-services/user/'
   isLogged:boolean = false;
   constructor(private http: HttpClient,private localStorage:LocalStorageService)
   {
