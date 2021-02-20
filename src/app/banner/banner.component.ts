@@ -96,9 +96,6 @@ export class BannerComponent implements OnInit {
     this.categoryService.getAllCategories().subscribe((data) => this.setCategories(data["menu"]));
     this.banners = this.route.snapshot.data['banners'];
     this.setBannerImages(this.banners['banners']);
-    // this.banner_images[0] = this.banners['banners'][0].images;
-    // console.log(this.banner_images,'banners');
-
   }
 
   setBannerImages = (images) => {

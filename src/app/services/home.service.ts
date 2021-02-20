@@ -11,7 +11,7 @@ import { map } from "rxjs/operators";
 @Injectable()
 export class HomeService {
 
-  getSlidersApi = 'http://frontend-api.YarlStore.com/api/banner/banner-index';
+  getSlidersApi = '/yarl-store-services/banner/banner-index';
 
   constructor(private http: HttpClient, private currencyService:CurrencyService) { }  
 

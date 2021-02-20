@@ -13,7 +13,8 @@ export class ProductService {
 
   getTopSelingProductsApi = '/yarl-store-services/products/popular/products';
   getProductDetailsApi = '/yarl-store-services/products/';
-  getMostSellingProductsApi = 'http://frontend-api.YarlStore.com/api/product/home-popular-products';
+  //getMostSellingProductsApi = 'http://frontend-api.YarlStore.com/api/product/home-popular-products';
+  getMostSellingProductsApi = '/yarl-store-services/products/popular/products';
 
   constructor(private http: HttpClient, private currencyService:CurrencyService) { }
 
