@@ -9,9 +9,10 @@ import { map } from "rxjs/operators";
 @Injectable()
 export class CategoryService {
 
-  getAllCategoriesApi = 'http://frontend-api.yarlStore.com/api/categories/get-all-category-tree';
-  getAllCategoriesAndProductsApi = "http://frontend-api.yarlStore.com/api/categories/get-all-category-products";
-  getCategoryDetails = 'http://frontend-api.yarlStore.com/api/categories/categories-view';
+  getAllCategoriesApi = '/yarl-store-services/categories';
+  getAllCategoriesAndProductsApi = "http://frontend-api.YarlStore.com/api/categories/get-all-category-products";
+  getCategoryDetails = 'http://frontend-api.YarlStore.com/api/categories/categories-view';
+  
   public showmenu:boolean = false;
   constructor(private http: HttpClient) { }  
   

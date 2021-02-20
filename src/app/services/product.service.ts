@@ -11,9 +11,9 @@ import { map } from "rxjs/operators";
 @Injectable()
 export class ProductService {
 
-  getTopSelingProductsApi = 'http://frontend-api.yarlStore.com/api/product/home-top-selling-products';
-  getProductDetailsApi = 'http://127.0.0.1:5000/product/';
-  getMostSellingProductsApi = 'http://frontend-api.yarlStore.com/api/product/home-popular-products';
+  getTopSelingProductsApi = '/yarl-store-services/products/popular/products';
+  getProductDetailsApi = '/yarl-store-services/products/';
+  getMostSellingProductsApi = 'http://frontend-api.YarlStore.com/api/product/home-popular-products';
 
   constructor(private http: HttpClient, private currencyService:CurrencyService) { }
 

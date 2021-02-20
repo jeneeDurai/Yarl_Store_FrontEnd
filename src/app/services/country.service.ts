@@ -11,9 +11,9 @@ import { map } from "rxjs/operators";
 @Injectable()
 export class CountryService {
 
-  getAllCountriesApi = 'http://frontend-api.yarlStore.com/api/location/country-index';
-  getAllStatesApi = "http://frontend-api.yarlStore.com/api/location/country-view";
-  getAllCityApi = "http://frontend-api.yarlStore.com/api/location/state-view";
+  getAllCountriesApi = 'http://frontend-api.YarlStore.com/api/location/country-index';
+  getAllStatesApi = "http://frontend-api.YarlStore.com/api/location/country-view";
+  getAllCityApi = "http://frontend-api.YarlStore.com/api/location/state-view";
 
   constructor(private http: HttpClient, private currencyService:CurrencyService) { }  
 
