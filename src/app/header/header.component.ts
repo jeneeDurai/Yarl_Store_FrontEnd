@@ -65,7 +65,7 @@ export class HeaderComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.categoryService.getAllCategories().subscribe((data) => this.setCategories(data["menu"]));
+    this.categoryService.getAllCategories().subscribe((data) => this.setCategories(data["data"]));
 
 
     this.countCart = this.cartServices.cart.length;
