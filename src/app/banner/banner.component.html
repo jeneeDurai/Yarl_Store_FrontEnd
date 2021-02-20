@@ -5,8 +5,8 @@
                <div class="slider sld1">
                 <swiper  [config]="config">
                     <div class="swiper-wrapper">
-                        <div class="swiper-slide" *ngFor="let image of categories1">
-                            <img [src]="image.category_banner" width="100%" height="100%"/>
+                        <div class="swiper-slide" *ngFor="let image of images">
+                            <img [src]="image.path" width="100%" height="100%"/>
                         </div>
                     </div>                
                 </swiper>
@@ -14,8 +14,8 @@
                <div class="slider">
                 <swiper  [config]="config">
                     <div class="swiper-wrapper">
-                        <div class="swiper-slide" *ngFor="let image2 of categories2">
-                            <img [src]="image2.category_banner" width="100%" height="100%"/>
+                        <div class="swiper-slide" *ngFor="let image2 of images2">
+                            <img [src]="image2.path" width="100%" height="100%"/>
                         </div>
                     </div>                
                 </swiper>
