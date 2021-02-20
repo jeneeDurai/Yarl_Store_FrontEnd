@@ -26,10 +26,10 @@ export class RegisterComponent implements OnInit {
   ngOnInit(): void {
 
     this.registerForm = this.fb.group({
-      'firstName': ['', Validators.compose([Validators.required, Validators.minLength(2), Validators.pattern(/^(?!\s*$)[a-zA-Z\s]*$/)])],
-      'lastName': ['', Validators.compose([Validators.required, Validators.minLength(2), Validators.pattern(/^(?!\s*$)[a-zA-Z\s]*$/)])],
-      'email': ['', Validators.compose([Validators.required, Validators.pattern(/^[A-Z0-9_-]+([\.][A-Z0-9_]+)*@[A-Z0-9-]+(\.[a-zA-Z]{2,20})+$/i)])],
-      'password': ['', Validators.compose([Validators.required, Validators.minLength(8), Validators.pattern(/^[a-zA-Z\d$@$!%*#?&^\S]*$/)])]
+      'firstName': [null, Validators.compose([Validators.required, Validators.minLength(2), Validators.pattern(/^(?!\s*$)[a-zA-Z\s]*$/)])],
+      'lastName': [null, Validators.compose([Validators.required, Validators.minLength(2), Validators.pattern(/^(?!\s*$)[a-zA-Z\s]*$/)])],
+      'email': [null, Validators.compose([Validators.required, Validators.pattern(/^[A-Z0-9_-]+([\.][A-Z0-9_]+)*@[A-Z0-9-]+(\.[a-zA-Z]{2,20})+$/i)])],
+      'password': [null, Validators.compose([Validators.required, Validators.minLength(8), Validators.pattern(/^[a-zA-Z\d$@$!%*#?&^\S]*$/)])]
   })
   }
 
@@ -63,6 +63,7 @@ export class RegisterComponent implements OnInit {
         console.log("dta is", data)
         if(data['success']) {
           this.notifyService.showSuccess(data['message'], "Success")
+          this.registerForm.reset();
         }else
         {
           this.notifyService.showError(data['message'], "Error")

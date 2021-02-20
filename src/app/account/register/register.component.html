@@ -24,8 +24,53 @@
         <label class="form-control-placeholder" for="register_password">password *</label>
     </div>
 
+    <div *ngIf="registerForm.get('firstName').invalid && (registerForm.get('firstName').dirty || registerForm.get('firstName').touched)" class="alert alert-danger">
+        <div *ngIf="registerForm.get('firstName').hasError('required')">
+            First Name is required.
+        </div>
+        <div *ngIf="registerForm.get('firstName').hasError('minlength')">
+            First Name must be at least 2 characters long.
+        </div>
+        <div *ngIf="registerForm.get('firstName').hasError('pattern')">
+            First Name cannot contain numeric value
+        </div>
+    </div>
+
+    <div *ngIf="registerForm.get('lastName').invalid && (registerForm.get('lastName').dirty || registerForm.get('lastName').touched)" class="alert alert-danger">
+        <div *ngIf="registerForm.get('lastName').hasError('required')">
+            Last Name is required.
+        </div>
+        <div *ngIf="registerForm.get('lastName').hasError('minlength')">
+            Last Name must be at least 2 characters long.
+        </div>
+        <div *ngIf="registerForm.get('lastName').hasError('pattern')">
+            Last Name cannot contain numeric value
+        </div>
+    </div>
+
+    <div *ngIf="registerForm.get('email').invalid && (registerForm.get('lastName').dirty || registerForm.get('email').touched)" class="alert alert-danger">
+        <div *ngIf="registerForm.get('email').hasError('required')">
+            Email is required.
+        </div>
+        <div *ngIf="registerForm.get('email').hasError('pattern')">
+            Email is invalid
+        </div>
+    </div>
+
+    <div *ngIf="registerForm.get('password').invalid && (registerForm.get('password').dirty || registerForm.get('password').touched)" class="alert alert-danger">
+        <div *ngIf="registerForm.get('password').hasError('required')">
+            Password is required.
+        </div>
+        <div *ngIf="registerForm.get('password').hasError('minlength')">
+            Password must be at least 8 characters long.
+        </div>
+        <div *ngIf="registerForm.get('password').hasError('pattern')">
+            Password is invalid
+        </div>
+    </div>
+
     <div class="form-group">
-        <button type="submit" class="btn btn-default" (click)="saveDetails()">Register</button>
+        <button type="submit" class="btn btn-default" (click)="saveDetails()" [disabled]="registerForm.invalid">Register</button>
     </div>
 </form>
 
