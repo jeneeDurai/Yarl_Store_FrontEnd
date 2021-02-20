@@ -48,7 +48,7 @@
         </div>
     </div>
 
-    <div *ngIf="registerForm.get('email').invalid && (registerForm.get('lastName').dirty || registerForm.get('email').touched)" class="alert alert-danger">
+    <div *ngIf="registerForm.get('email').invalid && (registerForm.get('email').dirty || registerForm.get('email').touched)" class="alert alert-danger">
         <div *ngIf="registerForm.get('email').hasError('required')">
             Email is required.
         </div>

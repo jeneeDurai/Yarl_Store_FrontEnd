@@ -3,6 +3,7 @@ import {FormGroup, Validators, FormBuilder} from '@angular/forms';
 import { UserService } from '../../services/user.service';
 import {LocalStorageService, SessionStorageService} from 'ngx-webstorage';
 import { ActivatedRoute, Router} from '@angular/router';
+import { NotificationService } from './../../services/notification.service';
 
   // import { sha1 } from '@angular/compiler/src/core';
   // import * as crypto from 'crypto-js';
@@ -18,12 +19,12 @@ export class SigninComponent implements OnInit {
   isLoggedIn:boolean = false;
   isAdmin:boolean = false;
    hashed_password: string;
-  constructor(private fb: FormBuilder, private userService: UserService,private localStorage:LocalStorageService, private router:Router) { }
+  constructor(private fb: FormBuilder, private userService: UserService,private localStorage:LocalStorageService, private router:Router, private notifyService:NotificationService) { }
 
   ngOnInit(): void {
     this.LoginForm = this.fb.group({
-      'email': ['', Validators.compose([Validators.required, Validators.pattern(/^[A-Z0-9_-]+([\.][A-Z0-9_]+)*@[A-Z0-9-]+(\.[a-zA-Z]{2,20})+$/i)])],
-      'password': ['', Validators.compose([Validators.required, Validators.pattern(/^[a-zA-Z\d$@$!%*#?    &^\S]*$/)])]
+      'email': [null, Validators.compose([Validators.required, Validators.pattern(/^[A-Z0-9_-]+([\.][A-Z0-9_]+)*@[A-Z0-9-]+(\.[a-zA-Z]{2,20})+$/i)])],
+      'password': [null, Validators.compose([Validators.required, Validators.pattern(/^[a-zA-Z\d$@$!%*#?    &^\S]*$/)])]
   })
   }
 
@@ -43,23 +44,19 @@ export class SigninComponent implements OnInit {
       password: this.hashed_password
       }
     this.userService.login(body).subscribe(response => {
-      console.log(response)
-      this.localStorage.store('token',response['data'].access_token);
-      this.localStorage.store('username',response['username']);
+      if(response['success']){
 
-      if(response['data'].access_token)
-      {
+        this.localStorage.store('token',response['data'].access_token);
+        this.localStorage.store('username',response['data'].username);
         console.log("Logged innn")
         this.router.navigate(['/home']);
         this.isLoggedIn = true;
         this.userService.isLogged = true;
-      }else
-      {
 
-
+      }else{
+        this.notifyService.showError(response['message'], "Error")
       }
-
-
+      console.log(response)
     }, error => {
         console.log(error)
     })
