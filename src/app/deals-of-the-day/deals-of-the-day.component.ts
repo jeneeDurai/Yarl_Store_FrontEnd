@@ -61,17 +61,17 @@ export class DealsOfTheDayComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.products_details = this.route.snapshot.data['hnData'].products;
+    this.products_details = this.route.snapshot.data['hnData'].data;
 
 
     this.products_details.forEach( (product_detail) => {
 
       if(this.currencyService.currencyFormat === '$')
       {
-        product_detail.product.price = product_detail.product.price / this.currencyService.convertionRate;
+        product_detail.price = product_detail.price / this.currencyService.convertionRate;
       }else
       {
-        product_detail.product.price = product_detail.product.price;
+        product_detail.price = product_detail.price;
       }
 
     });

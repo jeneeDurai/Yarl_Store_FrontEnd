@@ -15,15 +15,15 @@
                     <div class="swiper-slide pro" *ngFor="let product_detail of products_details">
                         <div class="content-overlay"></div>
                         <div class="product">
-                            <h4>{{product_detail.product.product_name}}</h4>
-                            <p> {{product_detail.product.price | number:'1.2-2'}} <span
+                            <h4>{{product_detail.product_name}}</h4>
+                            <p> {{product_detail.price | number:'1.2-2'}} <span
                                     [style.float]="this.currencyService.currenyPosition">
                                     {{this.currencyService.currencyFormat}} &nbsp;</span> </p>
-                            <a [routerLink]="['/product-detail/', product_detail.product.id]">
+                            <a [routerLink]="['/product-detail/', product_detail.id]">
                                 <img [src]="product_detail.images[0].image_url" class="image img-responsive" />
                             </a>
                             <div class="header-icon-con">
-                                <a [routerLink]="['/product-detail/', product_detail.product.id]" class="product-icn-dt"
+                                <a [routerLink]="['/product-detail/', product_detail.id]" class="product-icn-dt"
                                     style="margin-right: 2%; margin-right: 15px;"> <i class="fa fa-eye"
                                         aria-hidden="true"> </i></a>
 
