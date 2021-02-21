@@ -27,12 +27,12 @@ export class CartService {
 
    }
 
-
+   
   addProuctsTocart(product)
   {
-    if(!this.cart.includes(product))
+    if(!this.cart.some(({ id }) => id === product.id))
     {
-      product['qnt'] = 1;
+        product['qnt'] = 1;
         this.cart.push(product);
         this.localStorage.store('cart',this.cart);
         return {message:'Product Added to Cart', status:200, success:true};

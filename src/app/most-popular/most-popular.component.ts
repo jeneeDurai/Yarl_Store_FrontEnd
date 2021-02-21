@@ -58,7 +58,7 @@ export class MostPopularComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.products_details = this.route.snapshot.data['products'].products;
+    this.products_details = this.route.snapshot.data['products'].data;
 
 
 
@@ -66,10 +66,10 @@ export class MostPopularComponent implements OnInit {
 
       if(this.currencyService.currencyFormat === '$')
       {
-        product_detail.product.price = product_detail.product.price / this.currencyService.convertionRate;
+        product_detail.price = product_detail.price / this.currencyService.convertionRate;
       }else
       {
-        product_detail.product.price = product_detail.product.price;
+        product_detail.price = product_detail.price;
       }
 
     });
