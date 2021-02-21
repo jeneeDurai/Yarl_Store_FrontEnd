@@ -194,10 +194,10 @@
                 <li *ngFor="let cat of categories ;  let i=index">
                     <div *ngIf="i<10">
                         <b *ngIf="cat.isMain">{{cat.category_name}}</b> <span *ngIf="!cat.isMain"
-                            (mouseover)="showSubCat = true; mainCatid = cat.id; test()">{{cat.category_name}}</span>
+                            (mouseover)="showSubCat = true; mainCatid = cat.id; loadSubCategory()">{{cat.category_name}}</span>
                         <div class="sub-cat" *ngIf="showSubCat">
                             <ul>
-                                <li *ngFor="let subcat of subCategories ">
+                                <li *ngFor="let subcat of subCategories">
                                     {{subcat.category_name}}
                                     <ul>
                                         <li *ngFor="let childCat of subcat.subCategory">

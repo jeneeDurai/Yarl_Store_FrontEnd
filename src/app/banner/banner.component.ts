@@ -128,7 +128,7 @@ export class BannerComponent implements OnInit {
     this.categories.filter((cat) => {
       if(cat.id == this.mainCatid)
       {
-        this.subCategories = cat.subCategory;
+        this.subCategories = cat.sub_categories;
       }
     });
   }

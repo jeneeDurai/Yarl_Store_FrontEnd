@@ -166,12 +166,12 @@ export class HeaderComponent implements OnInit {
     this.showmenu = !this.showmenu;
   }
 
-  test()
+  loadSubCategory()
   {
     this.categories.filter((cat) => {
       if(cat.id == this.mainCatid)
       {
-        this.subCategories = cat.subCategory;
+        this.subCategories = cat.sub_categories;
       }
     });
   }
