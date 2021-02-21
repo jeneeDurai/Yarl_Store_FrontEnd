@@ -83,7 +83,7 @@ export class MostPopularComponent implements OnInit {
   {
    let  $rspn = this.cartService.addProuctsTocart(product);
 
-   if($rspn.message == 'Product Added')
+   if($rspn.message == 'Product Added to Cart')
    {
     this.notifyService.showSuccess("Product Added !!", "Success")
    }else
