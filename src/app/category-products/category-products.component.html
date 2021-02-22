@@ -1,16 +1,15 @@
 <section class="container-fluid" *ngFor="let category of categories" style="margin-top: 15px; margin-bottom: 15px;">
-    <!-- <img [src]="category.objectWise.category_banner" width="100%" height="120"/> -->
     <div class="row">
         <div class="col-md-12 title">
             <a [routerLink]="['/category/', category.objectWise.id]" style="text-decoration: none; color: inherit;"><h3>{{category.objectWise.category_name}} <span style="font-size: 15px; margin-left: 2%;">See More..</span></h3></a>  
             <hr>
             <hr class="active-line"/>
 
-            <div class="sub-cat">
+            <!-- <div class="sub-cat">
                 <ul>
                     <li *ngFor="let product_detail of category.objectWise.products">sub cat 1</li>
                 </ul>
-            </div>
+            </div> -->
         </div>
     </div>
 
