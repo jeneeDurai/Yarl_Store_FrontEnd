@@ -55,7 +55,7 @@ export class CategoryProductsComponent implements OnInit {
     private cartService:CartService,private notifyService:NotificationService,private wishlistService:WhisListService) { }
 
   ngOnInit(): void {
-    this.categoryService.getAllCategoriesAndProducts().subscribe((data) => this.setCategories(data["menu"]));
+    this.categoryService.getAllCategoriesAndProducts().subscribe((data) => this.setCategories(data["data"]));
 
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((position) => {

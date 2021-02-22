@@ -59,6 +59,8 @@ export class SigninComponent implements OnInit {
       console.log(response)
     }, error => {
         console.log(error)
+        this.notifyService.showError(error.error.message, "Error")
+
     })
   }
 }

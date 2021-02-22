@@ -69,7 +69,7 @@ export class RegisterComponent implements OnInit {
           this.notifyService.showError(data['message'], "Error")
         }
       },
-      error: error => this.notifyService.showError('There was an error!', error)
+      error: error => this.notifyService.showError(error.error.message, "Error")
     });
 
 

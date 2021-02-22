@@ -10,7 +10,7 @@ import { map } from "rxjs/operators";
 export class CategoryService {
 
   getAllCategoriesApi = '/yarl-store-services/categories';
-  getAllCategoriesAndProductsApi = "http://frontend-api.YarlStore.com/api/categories/get-all-category-products";
+  getAllCategoriesAndProductsApi = "/yarl-store-services/categories/get-all-category-products";
   getCategoryDetails = 'http://frontend-api.YarlStore.com/api/categories/categories-view';
   
   public showmenu:boolean = false;
