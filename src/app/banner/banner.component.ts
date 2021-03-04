@@ -27,8 +27,7 @@ export class BannerComponent implements OnInit {
   public mainCatid : any;
   public subCategories: any[];
   public banners: any;
-  public slider1_images : any;
-  public silder2_images : any;
+
   
 
   images = [];
@@ -94,23 +93,13 @@ export class BannerComponent implements OnInit {
 
   ngOnInit(): void {
     this.categoryService.getAllCategories().subscribe((data) => this.setCategories(data["menu"]));
-    this.banners = this.route.snapshot.data['banners'];
-    this.setBannerImages(this.banners['banners']);
+    this.setBannerImages(this.route.snapshot.data['banners']);
   }
 
   setBannerImages = (images) => {
-    let test = [];
-     this.slider1_images = images[0]['images'];
-     this.silder2_images = images[1]['images'];
-
-     this.slider1_images.forEach(image => {
-       this.images.push({path:image.image});
-     });
-
-     this.silder2_images.forEach(image => {
-      this.images2.push({path:image.image});
-    });
-
+      let splitter = Math.ceil(images['data'].length/2); 
+      this.images = images['data'].splice(0, splitter); 
+      this.images2 = images['data'].splice(0,splitter) 
   }
 
 
