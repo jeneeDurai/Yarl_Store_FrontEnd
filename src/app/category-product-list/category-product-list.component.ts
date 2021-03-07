@@ -5,6 +5,8 @@ import { NotificationService } from './../services/notification.service';
 import { WhisListService } from '../services/whislist.service';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 
+import { ProductService } from './../services/product.service';
+
 @Component({
   selector: 'app-category-product-list',
   templateUrl: './category-product-list.component.html',
@@ -15,6 +17,8 @@ export class CategoryProductListComponent implements OnInit {
   public products_details: any[] = [];
   public category_details: any[];
   public subcategory_details : any[];
+
+  products:any[] = [];
 
   customOptions: OwlOptions = {
     loop: true,
@@ -41,12 +45,26 @@ export class CategoryProductListComponent implements OnInit {
     nav: true
   }
 
-  constructor(private actRoute: ActivatedRoute,private cartService:CartService,private notifyService:NotificationService, private wishlistService:WhisListService) { }
+  constructor(private productService:ProductService, private actRoute: ActivatedRoute,private cartService:CartService,private notifyService:NotificationService, private wishlistService:WhisListService) { }
 
   ngOnInit(): void {
     this.category_details = this.actRoute.snapshot.data['categoryDetails'].objectWise;
-    this.products_details = this.actRoute.snapshot.data['categoryDetails'].objectWise.products;
-    this.subcategory_details = this.actRoute.snapshot.data['categoryDetails'].objectWise.subcategories;
+    
+    this.actRoute.params.subscribe(params => {
+      this.productService.searchProduct(params['product']).subscribe(
+        (response:any)=>{
+          this.products = response.data;
+        },(error) =>{
+    
+        }
+      )
+
+    });
+
+
+
+    //this.products_details = this.actRoute.snapshot.data['categoryDetails'].objectWise.products;
+    //this.subcategory_details = this.actRoute.snapshot.data['categoryDetails'].objectWise.subcategories;
 
     console.log(this.products_details);
   }

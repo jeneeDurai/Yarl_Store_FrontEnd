@@ -6,10 +6,10 @@
 
         <div class="panel-body">
             <ul>
-                <li *ngFor = "let category of filter_subcategory">
+                <li *ngFor = "let category of categories">
                     <div class="checkboxes">
-                        <input id="{{category.id}}"  (click)="setCategory($event,category.id);" type="checkbox" tabindex="1"/><label class="green-background" for="{{category.id}}">{{category.category_name}}
-                            <span class="count">({{ category.products?.length }})</span>
+                        <input id="{{category.id}}"  (click)="setCategory($event,category.id);" type="checkbox" tabindex="1"/><label class="green-background" for="{{category.id}}">{{category.objectWise.category_name}}
+                            <span class="count">({{ category.objectWise.products?.length }})</span>
                         </label>
                     </div>
                 </li>
@@ -25,7 +25,7 @@
              <h4>Brands</h4>
         </div>
 
-        <div class="panel-body">
+        <!-- <div class="panel-body">
             <ul>
                 <li *ngFor = "let category of categories">
                     <div class="checkboxes">
@@ -35,7 +35,7 @@
                     </div>
                 </li>
             </ul>
-        </div>
+        </div> -->
     </div>
 </div>
 
@@ -46,7 +46,7 @@
              <h4>Reviews</h4>
         </div>
 
-        <div class="panel-body">
+        <!-- <div class="panel-body">
             <ul>
                 <li>
                     <div class="checkboxes">
@@ -82,7 +82,7 @@
 
                 </li>
             </ul>
-        </div>
+        </div> -->
     </div>
 </div>
 

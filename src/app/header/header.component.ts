@@ -16,6 +16,7 @@ import {
   transition,
   // ...
 } from '@angular/animations';
+import { NullTemplateVisitor } from '@angular/compiler';
 
 @Component({
   selector: 'app-header',
@@ -51,6 +52,8 @@ export class HeaderComponent implements OnInit {
   public showSubCat: boolean = false;
   public fixedHeader : boolean =false;
 
+  searchKey:string = '';
+
 
 
   constructor(
@@ -61,7 +64,8 @@ export class HeaderComponent implements OnInit {
     public whislistService:WhisListService,
     private notifyService:NotificationService,
     private categoryService: CategoryService,
-    public currencyService: CurrencyService
+    public currencyService: CurrencyService,
+    private route: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
@@ -83,8 +87,10 @@ export class HeaderComponent implements OnInit {
     }
 
 
-
-
+    this.route.params.subscribe(params => {
+      this.searchKey = params['product'];
+    });
+  
   }
 
   setCategories = (categories) => {
@@ -174,5 +180,11 @@ export class HeaderComponent implements OnInit {
         this.subCategories = cat.sub_categories;
       }
     });
+  }
+
+
+
+  searchProduct(){
+    this.router.navigateByUrl('search/'+ this.searchKey);
   }
 }

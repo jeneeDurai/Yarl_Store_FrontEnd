@@ -30,7 +30,6 @@ export class ProductService {
   getProductDetails(id):Observable<ResponseWrapper>
   {
     return this.http.get(this.getProductDetailsApi + id).pipe(map((res:Response) => {
-      console.log("response is ", res)
       return res;
     }));
   }
@@ -40,11 +39,14 @@ export class ProductService {
   {
 
     return this.http.get(this.getMostSellingProductsApi).pipe(map((res:Response) => {
-      console.log(res,'assdsaldnsa');
       return res;
     }));
   }
 
+
+  searchProduct(searchKey):Observable<any>{
+    return this.http.get('/yarl-store-services/product/filter'+'?key='+searchKey)
+  }
 
 
 }
