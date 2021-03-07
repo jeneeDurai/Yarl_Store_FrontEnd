@@ -76,8 +76,6 @@ export class HeaderComponent implements OnInit {
     if(this.localStorage.retrieve('wishList'))
     {
       this.whishlistProducts = this.localStorage.retrieve('wishList');
-      console.log("wishlist products", this.whishlistProducts)
-
     }
 
     if(this.localStorage.retrieve('cart'))

@@ -98,7 +98,6 @@ export class CheckoutComponent implements OnInit {
   setCountries(countries)
   {
     this.countries = countries.dataProvider;
-    console.log(this.countries);
   }
 
   onChangeConuty(country)
@@ -119,7 +118,6 @@ export class CheckoutComponent implements OnInit {
   getCity(state)
   {
     this.countryService.getCities(state).subscribe((data) => this.cities = data['dataProvider']);
-    console.log(this.cities);
   }
 
   getUserIdsFirstWay($event) {

@@ -48,7 +48,6 @@ export class SigninComponent implements OnInit {
 
         this.localStorage.store('token',response['data'].access_token);
         this.localStorage.store('username',response['data'].username);
-        console.log("Logged innn")
         this.router.navigate(['/home']);
         this.isLoggedIn = true;
         this.userService.isLogged = true;
@@ -56,9 +55,7 @@ export class SigninComponent implements OnInit {
       }else{
         this.notifyService.showError(response['message'], "Error")
       }
-      console.log(response)
     }, error => {
-        console.log(error)
         this.notifyService.showError(error.error.message, "Error")
 
     })

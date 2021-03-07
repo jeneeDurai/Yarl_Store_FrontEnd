@@ -40,7 +40,6 @@ export class UserService {
 
   login(user):Observable<ResponseWrapper>
   {
-    console.log(user,' user');
     return this.http.post(this.loginApi,user).pipe(map((res:Response) => {
       return res;
     }));
@@ -49,7 +48,6 @@ export class UserService {
   getProfile(userId): Observable<any> {
     return this.http.get(this.getProfileApi + userId).pipe(
       map((res: Response) => {
-        console.log("response profile ", res);
         return res;
       }));
   }

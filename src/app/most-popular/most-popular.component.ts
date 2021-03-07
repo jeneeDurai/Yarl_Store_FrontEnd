@@ -73,10 +73,6 @@ export class MostPopularComponent implements OnInit {
       }
 
     });
-
-
-    console.log(this.products_details);
-
   }
 
   addToCart(product)

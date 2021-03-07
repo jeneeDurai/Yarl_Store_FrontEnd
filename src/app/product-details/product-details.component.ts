@@ -95,7 +95,6 @@ export class ProductDetailsComponent implements OnInit {
   ngOnInit(): void {
     addToCartForm: FormGroup;
     this.products_details = this.actRoute.snapshot.data['productDetails']['data'][0];
-    console.log("product details ", this.products_details);
     var drift = new Drift(document.querySelector(".main-img"), {
       paneContainer: document.querySelector("p")
     });
@@ -203,7 +202,6 @@ export class ProductDetailsComponent implements OnInit {
     this.image = image+'?400';
     this.zooom = image+'?1200';
     document.querySelector(".main-img").setAttribute('data-zoom',this.zooom);
-    console.log(this.zooom,'images');
   }
 
 
@@ -271,7 +269,6 @@ console.log("rspn",$rspn)
       rating: this.rating,
       productId: this.products_details['id']
     }
-    console.log("values ",body)
   }
 
 }

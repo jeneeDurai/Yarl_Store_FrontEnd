@@ -21,7 +21,6 @@ export class WhisListService {
         {
           this.cart = this.localStorage.retrieve('wishList');
         }
-        console.log("length cart wishlist service", this.cart.length)
     }
 
 
@@ -33,12 +32,10 @@ export class WhisListService {
     if(!this.cart.includes(product))
     {
         this.cart.push(product);
-        console.log(this.cart,'whishList');
         this.localStorage.store('wishList',this.cart);
         return {message:'Product Added To Wishlist', status:200, success:true};
     }else
     {
-      console.log("cart in else", this.cart)
         return {message:'Product Already Added', status:200, success:false};
     }
 

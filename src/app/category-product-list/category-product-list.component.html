@@ -4,8 +4,20 @@
     <div class="col-md-2 p-0" style="padding: 0;">
         <app-product-filters></app-product-filters>
     </div>
-    
     <div class="col-md-10 row" style="padding:30px">
+        <div class="col-md-12">
+            <form [formGroup]="filterForm">
+                <span style="font-weight: bolder;">Sort By : </span>
+                <mat-form-field appearance="outline">
+                    <mat-select formControlName="selectOption" (selectionChange)="changeSorting()">
+                        <mat-option *ngFor="let orderByItem of orderByList" [value]="orderByItem">
+                        {{orderByItem}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </form>
+        </div>
+
         <div class="col-md-2 product-cart" *ngFor="let product of products">
             <div class="product">
                 <h4>{{product.product_name}}</h4>

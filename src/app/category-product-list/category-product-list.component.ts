@@ -4,8 +4,10 @@ import { CartService } from './../services/cart.service';
 import { NotificationService } from './../services/notification.service';
 import { WhisListService } from '../services/whislist.service';
 import { OwlOptions } from 'ngx-owl-carousel-o';
-
+import { FormBuilder, FormGroup} from "@angular/forms";
 import { ProductService } from './../services/product.service';
+
+
 
 @Component({
   selector: 'app-category-product-list',
@@ -18,7 +20,11 @@ export class CategoryProductListComponent implements OnInit {
   public category_details: any[];
   public subcategory_details : any[];
 
+  orderByList: string[] = ["Best Match", "Price High to Low","Price Low to High"];
   products:any[] = [];
+
+  filterForm:FormGroup;
+
 
   customOptions: OwlOptions = {
     loop: true,
@@ -45,7 +51,7 @@ export class CategoryProductListComponent implements OnInit {
     nav: true
   }
 
-  constructor(private productService:ProductService, private actRoute: ActivatedRoute,private cartService:CartService,private notifyService:NotificationService, private wishlistService:WhisListService) { }
+  constructor(private fb: FormBuilder,private productService:ProductService, private actRoute: ActivatedRoute,private cartService:CartService,private notifyService:NotificationService, private wishlistService:WhisListService) { }
 
   ngOnInit(): void {
     this.category_details = this.actRoute.snapshot.data['categoryDetails'].objectWise;
@@ -61,12 +67,14 @@ export class CategoryProductListComponent implements OnInit {
 
     });
 
+    this.filterForm = this.fb.group({
+      selectOption: this.orderByList[0],
+    });
+
 
 
     //this.products_details = this.actRoute.snapshot.data['categoryDetails'].objectWise.products;
     //this.subcategory_details = this.actRoute.snapshot.data['categoryDetails'].objectWise.subcategories;
-
-    console.log(this.products_details);
   }
 
   addToCart(product)
@@ -96,4 +104,16 @@ export class CategoryProductListComponent implements OnInit {
     }
   }
 
+
+  changeSorting(){
+    if(this.filterForm.get('selectOption').value == "Price High to Low"){
+      this.products.sort(function(a, b) {
+        return parseFloat(b.price) - parseFloat(a.price);
+      });
+    }else{
+      this.products.sort(function(a, b) {
+        return parseFloat(a.price) - parseFloat(b.price);
+      });
+    }
+  }
 }

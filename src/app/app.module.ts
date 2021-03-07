@@ -39,8 +39,6 @@ import {IvyCarouselModule} from 'angular-responsive-carousel';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { OtherService } from './services/other.service';
 
-
-
 /* resolver */
 
 import { ProductResolver } from './resolver/product.reslover';
@@ -61,6 +59,9 @@ import { TermsAndConditionsComponent } from './terms-and-conditions/terms-and-co
 import {MostSellingProductsResolver} from './resolver/most-selling-products.resolver';
 import { UserProfileResolver } from './resolver/userProfile.resolver';
 import  { StarComponent } from './shared/star.component';
+
+import { MatSelectModule } from '@angular/material/select';
+import { MatFormFieldModule } from '@angular/material/form-field';
 
 @NgModule({
   declarations: [
@@ -97,6 +98,8 @@ import  { StarComponent } from './shared/star.component';
     ToastrModule.forRoot(),
     BrowserAnimationsModule,
     NgxWebstorageModule.forRoot(),
+    MatSelectModule,
+    MatFormFieldModule,
     // RatingModule,
     // StarRatingModule,
     NgxImageZoomModule,

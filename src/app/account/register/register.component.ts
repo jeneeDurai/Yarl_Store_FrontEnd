@@ -60,7 +60,6 @@ export class RegisterComponent implements OnInit {
     }
     this.userService.register(body).subscribe({
       next: data => {
-        console.log("dta is", data)
         if(data['success']) {
           this.notifyService.showSuccess(data['message'], "Success")
           this.registerForm.reset();

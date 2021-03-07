@@ -26,13 +26,10 @@ export class CategoryFilterComponent implements OnInit {
 
   setCategories = (categories) => {
     this.categories = categories;
-
-    console.log(this.categories);
   }
 
   setSubcat = (subcat) => {
     this.filter_subcategory = subcat;
-    console.log(this.filter_subcategory);
   }
 
   setCategory = (event,category_id) => {

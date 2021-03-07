@@ -11,7 +11,8 @@ export class CategoryService {
 
   getAllCategoriesApi = '/yarl-store-services/categories';
   getAllCategoriesAndProductsApi = "/yarl-store-services/categories/get-all-category-products";
-  getCategoryDetails = 'http://frontend-api.YarlStore.com/api/categories/categories-view';
+ // getCategoryDetails = 'http://frontend-api.YarlStore.com/api/categories/categories-view';
+  getCategoryDetails = '/yarl-store-services/categories/categories-view';
   
   public showmenu:boolean = false;
   constructor(private http: HttpClient) { }  

@@ -105,7 +105,6 @@ export class BannerComponent implements OnInit {
 
   setCategories = (categories) => {
    this.categories = categories;
-   console.log(this.categories);
   }
 
   mouseOverEvent = ($event) => {

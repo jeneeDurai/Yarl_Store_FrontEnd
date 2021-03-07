@@ -75,10 +75,6 @@ export class DealsOfTheDayComponent implements OnInit {
       }
 
     });
-
-
-    console.log(this.products_details);
-
   }
 
   addToCart(product)
@@ -109,8 +105,6 @@ export class DealsOfTheDayComponent implements OnInit {
       product['addedQnty']++;
      this.notifyService.showWarning("Product Already  Added !!", "Sorry")
     }
-
-    console.log(product);
   }
 
 
