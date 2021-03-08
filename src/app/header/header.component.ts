@@ -97,7 +97,7 @@ export class HeaderComponent implements OnInit {
 
 
   addProductToCart(product) {
-    let  $rspn = this.cartServices.addProuctsTocart(product);
+    let  $rspn = this.cartServices.addProductToCart(product);
 
     if($rspn.message == 'Product Added to Cart')
     {

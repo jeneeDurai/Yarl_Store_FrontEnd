@@ -79,7 +79,7 @@ export class DealsOfTheDayComponent implements OnInit {
 
   addToCart(product)
   {
-   let  $rspn = this.cartService.addProuctsTocart(product);
+   let  $rspn = this.cartService.addProductToCart(product);
 
    if($rspn.message == 'Product Added to Cart')
    {
@@ -94,7 +94,7 @@ export class DealsOfTheDayComponent implements OnInit {
 
   addToWishList(product)
   {
-    let  $rspn = this.wishlistService.addProuctsTocart(product);
+    let  $rspn = this.wishlistService.addProductToCart(product);
 
     if($rspn.message === 'Product Added To Wishlist')
     {

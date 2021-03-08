@@ -27,7 +27,7 @@ export class WhisListService {
    }
 
 
-  addProuctsTocart(product)
+  addProductToCart(product)
   {
     if(!this.cart.includes(product))
     {

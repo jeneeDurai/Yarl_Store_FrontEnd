@@ -206,7 +206,7 @@ export class ProductDetailsComponent implements OnInit {
 
 
   addProductToCart(product) {
-    let  $rspn = this.cartService.addProuctsTocart(product);
+    let  $rspn = this.cartService.addProductToCart(product);
 
     if($rspn.message == 'Product Added to Cart')
     {
@@ -218,7 +218,7 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   addProductToWishList(product) {
-    let  $rspn = this.whisListService.addProuctsTocart(product);
+    let  $rspn = this.whisListService.addProductToCart(product);
 console.log("rspn",$rspn)
     if($rspn.message == 'Product Added To Wishlist')
     {

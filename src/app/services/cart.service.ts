@@ -28,7 +28,7 @@ export class CartService {
    }
 
    
-  addProuctsTocart(product)
+  addProductToCart(product)
   {
     if(!this.cart.some(({ id }) => id === product.id))
     {
@@ -45,6 +45,13 @@ export class CartService {
         return {message:'Product Already Added', status:200, success:false};
     }
 
+  }
+
+  reduceProductQuantity(product){
+      const foundIndex = this.cart.findIndex(({ id }) => id === product.id);
+      this.cart[foundIndex].qnt--;
+      this.localStorage.store('cart',this.cart);
+        return {message:'Reduced Quantity', status:200, success:false};
   }
 
   // addProuctsToWishList(product)

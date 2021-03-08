@@ -110,7 +110,7 @@ export class CartComponent implements OnInit {
   {
     if(product.orderedQnty != 10)
     {
-      this.cartService.addProuctsTocart(product);
+      this.cartService.addProductToCart(product);
       product.orderedQnty++;
     }
   }
@@ -119,6 +119,7 @@ export class CartComponent implements OnInit {
   {
     if(product.orderedQnty != 1)
     {
+      this.cartService.reduceProductQuantity(product)
       product.orderedQnty--;
 
     }
