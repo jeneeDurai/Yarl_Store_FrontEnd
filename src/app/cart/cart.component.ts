@@ -74,12 +74,9 @@ export class CartComponent implements OnInit {
 
     this.cartProducts.filter((product) => {
         product.orderedQnty = product.qnt;
-        this.total[product.id] = product.price;
+        this.total[product.id] = product.price * product.orderedQnty;
     })
-
     this.totalPrice = this.total.reduce((acc, cur) => acc + Number(cur), 0);
-
-
   }
 
   rmvProduct(product) {
@@ -94,7 +91,6 @@ export class CartComponent implements OnInit {
   {
     this.total[product.id] = Number(product.orderedQnty) * product.price;
     this.totalPrice = this.total.reduce((acc, cur) => acc + Number(cur), 0);
-
   }
 
   checkOut()
@@ -114,6 +110,7 @@ export class CartComponent implements OnInit {
   {
     if(product.orderedQnty != 10)
     {
+      this.cartService.addProuctsTocart(product);
       product.orderedQnty++;
     }
   }

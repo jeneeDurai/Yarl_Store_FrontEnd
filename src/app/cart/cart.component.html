@@ -27,16 +27,16 @@
                 <td>{{product.price | currency:'Rs '}}</td>
                 <td>
                     <div class="qnty" style="width: 150px;">
-                        <button class="btn btn-circle float-left" (click)="decreaseQnty(product)">-</button>
+                        <button class="btn btn-circle float-left" (click)="decreaseQnty(product);calculate(product)">-</button>
 
-                            <input type="text" min="0" max="10" value="0"  [(ngModel)]="product.orderedQnty" class="form-control qnty" (change)="calculate(product)" />
-                        <button class="btn btn-circle float-left" (click)="increaseQnty(product)">+</button>
+                            <input type="text" min="0" max="10" value="0"  [(ngModel)]="product.orderedQnty" class="form-control qnty" (ngModelChange)="calculate(product)" />
+                        <button class="btn btn-circle float-left" (click)="increaseQnty(product);calculate(product)">+</button>
 
                     </div>
                 </td>
                 <td>{{product.orderedQnty * product.price  | currency:'Rs '}}</td>
-                <td>Discont</td>
-                <td>Grand Total</td>
+                <td>{{product.discounts.length != 0 ? product.discounts[0] : 0 }}</td>
+                <td>{{product.price * product.orderedQnty | currency:'Rs '}}</td>
 
             </tr>
 

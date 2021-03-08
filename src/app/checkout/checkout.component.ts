@@ -57,7 +57,7 @@ export class CheckoutComponent implements OnInit {
 
     this.cartProducts.filter((product) => {
         product.orderedQnty = product.qnt;
-        this.total[product.id] = product.price;
+        this.total[product.id] = product.price * product.orderedQnty;
     })
 
     this.totalPrice = this.total.reduce((acc, cur) => acc + Number(cur), 0);
