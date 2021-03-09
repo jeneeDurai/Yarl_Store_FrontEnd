@@ -11,9 +11,8 @@ import { map } from "rxjs/operators";
 @Injectable()
 export class CountryService {
 
-  getAllCountriesApi = 'http://frontend-api.YarlStore.com/api/location/country-index';
-  getAllStatesApi = "http://frontend-api.YarlStore.com/api/location/country-view";
-  getAllCityApi = "http://frontend-api.YarlStore.com/api/location/state-view";
+  getAllCountriesApi = '/yarl-store-services/countries';
+  getAllCityApi = "/yarl-store-services/states";
 
   constructor(private http: HttpClient, private currencyService:CurrencyService) { }  
 
@@ -28,18 +27,14 @@ export class CountryService {
 
   getAllStates(id):Observable<ResponseWrapper>
   {
-    id = Number(id)
-
-    return this.http.get(this.getAllStatesApi,{params:{id:id}}).pipe(map((res:Response) => {
+    return this.http.get(this.getAllCountriesApi + "/" + id).pipe(map((res:Response) => {
       return res;
     }));
   }
 
   getCities(id):Observable<ResponseWrapper>
   {
-    id = Number(id)
-
-    return this.http.get(this.getAllCityApi,{params:{id:id}}).pipe(map((res:Response) => {
+    return this.http.get(this.getAllCityApi + "/" + id).pipe(map((res:Response) => {
       return res;
     }));
   }

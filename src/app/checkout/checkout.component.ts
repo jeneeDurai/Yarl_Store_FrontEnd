@@ -97,17 +97,12 @@ export class CheckoutComponent implements OnInit {
 
   setCountries(countries)
   {
-    this.countries = countries.dataProvider;
+    this.countries = countries.data;
   }
 
-  onChangeConuty(country)
+  onChangeCountry(country)
   {
-    this.getStates(country);
-  }
-
-  getStates(country)
-  {
-    this.countryService.getAllStates(country).subscribe((data) => this.states = data['dataProvider']);
+    this.countryService.getAllStates(country).subscribe((data) => this.states = data['data']);
   }
 
   onChangeState(state)
@@ -117,7 +112,7 @@ export class CheckoutComponent implements OnInit {
 
   getCity(state)
   {
-    this.countryService.getCities(state).subscribe((data) => this.cities = data['dataProvider']);
+    this.countryService.getCities(state).subscribe((data) => this.cities = data['data']);
   }
 
   getUserIdsFirstWay($event) {
