@@ -83,8 +83,13 @@ export class CartComponent implements OnInit {
     if(this.cartService.removeProduct(product))
     {
       this.cartProducts = this.cartService.removeProduct(product);
+      this.total = []
+      this.cartProducts.filter((product) => {
+          product.orderedQnty = product.qnt;
+          this.total[product.id] = product.price * product.orderedQnty;
+      })
+      this.totalPrice = this.total.reduce((acc, cur) => acc + Number(cur), 0);
     }
-
   }
 
   calculate(product)
