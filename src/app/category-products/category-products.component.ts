@@ -84,7 +84,7 @@ export class CategoryProductsComponent implements OnInit {
 
     this.categories.forEach( (category) => {
 
-      category.objectWise.products.forEach(product => {
+      category.products.forEach(product => {
         if(this.currencyService.currencyFormat === '$')
         {
           product.price = product.price / this.currencyService.convertionRate;

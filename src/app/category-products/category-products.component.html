@@ -1,7 +1,7 @@
 <section class="container-fluid" *ngFor="let category of categories" style="margin-top: 15px; margin-bottom: 15px;">
     <div class="row">
         <div class="col-md-12 title">
-            <a [routerLink]="['/category/', category.objectWise.id]" style="text-decoration: none; color: inherit;"><h3>{{category.objectWise.category_name}} <span style="font-size: 15px; margin-left: 2%;">See More..</span></h3></a>  
+            <a [routerLink]="['/category/', category.id]" style="text-decoration: none; color: inherit;"><h3>{{category.category_name}} <span style="font-size: 15px; margin-left: 2%;">See More..</span></h3></a>  
             <hr>
             <hr class="active-line"/>
 
@@ -18,7 +18,7 @@
         <div class="col-md-12 deals-products-list" >
                 <swiper  [config]="config">
                     <div class="swiper-wrapper">
-                        <div class="swiper-slide pro" *ngFor="let product_detail of category.objectWise.products">
+                        <div class="swiper-slide pro" *ngFor="let product_detail of category.products">
                             <div class="content-overlay"></div>
                             <div class="product">
                                 <h4>{{product_detail.product_name}}</h4>

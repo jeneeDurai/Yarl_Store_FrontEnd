@@ -8,8 +8,8 @@
             <ul>
                 <li *ngFor = "let category of categories">
                     <div class="checkboxes">
-                        <input id="{{category.id}}"  (click)="setCategory($event,category.id);" type="checkbox" tabindex="1"/><label class="green-background" for="{{category.id}}">{{category.objectWise.category_name}}
-                            <span class="count">({{ category.objectWise.products?.length }})</span>
+                        <input id="{{category.id}}"  (click)="setCategory($event,category.id);" type="checkbox" tabindex="1"/><label class="green-background" for="{{category.id}}">{{category.category_name}}
+                            <span class="count">({{ category.products?.length }})</span>
                         </label>
                     </div>
                 </li>
