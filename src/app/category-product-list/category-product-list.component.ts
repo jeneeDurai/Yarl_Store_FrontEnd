@@ -54,10 +54,10 @@ export class CategoryProductListComponent implements OnInit {
   constructor(private fb: FormBuilder,private productService:ProductService, private actRoute: ActivatedRoute,private cartService:CartService,private notifyService:NotificationService, private wishlistService:WhisListService) { }
 
   ngOnInit(): void {
-    this.category_details = this.actRoute.snapshot.data['categoryDetails'].objectWise;
+    //this.category_details = this.actRoute.snapshot.data['categoryDetails'].objectWise;
     
-    this.actRoute.params.subscribe(params => {
-      this.productService.searchProduct(params['product']).subscribe(
+    this.actRoute.queryParams.subscribe(params => {
+      this.productService.searchProduct(params['key']).subscribe(
         (response:any)=>{
           this.products = response.data;
         },(error) =>{

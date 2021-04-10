@@ -26,10 +26,10 @@ export class CategoryService {
   }
 
 
-  getAllCategoriesAndProducts():Observable<ResponseWrapper>
+  getAllCategoriesAndProducts(filterObject):Observable<ResponseWrapper>
   {
 
-    return this.http.get(this.getAllCategoriesAndProductsApi).pipe(map((res:Response) => {
+    return this.http.get(this.getAllCategoriesAndProductsApi,{params:filterObject}).pipe(map((res:Response) => {
       return res;
     }));
   }

@@ -23,7 +23,7 @@ const routes: Routes = [
   { path: 'about-us', component: AboutUsComponent },
   { path : 'product-detail/:id', component: ProductDetailsComponent, pathMatch: 'full',resolve: {productDetails:ProductDetaiResolver}},
   { path : 'category/:id', component: CategoryProductListComponent,resolve:{categoryDetails:CategoryDetailResolver}},
-  { path : 'search/:product', component: CategoryProductListComponent,resolve:{categoryDetails:CategoryDetailResolver}},
+  { path : 'products', component: CategoryProductListComponent},
   { path: 'cart', component: CartComponent },
   { path: 'checkout', component: CheckoutComponent },
   { path: 'user/:id', component: ProfileComponent, resolve: {userProfile: UserProfileResolver} },

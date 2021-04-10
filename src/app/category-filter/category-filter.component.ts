@@ -18,7 +18,9 @@ export class CategoryFilterComponent implements OnInit {
   constructor(private categoryService:CategoryService) { }
 
   ngOnInit(): void {
-    this.categoryService.getAllCategoriesAndProducts().subscribe((data) => this.setCategories(data["data"]));
+    this.categoryService.getAllCategoriesAndProducts({
+      key:"ilo"
+    }).subscribe((data) => this.setCategories(data["data"]));
    // this.categoryService.getCategoryDetail(1).subscribe((data) => this.setSubcat(data["objectWise"]["subcategories"]));
 
   }

@@ -85,8 +85,8 @@ export class HeaderComponent implements OnInit {
     }
 
 
-    this.route.params.subscribe(params => {
-      this.searchKey = params['product'];
+    this.route.queryParams.subscribe(params => {
+      this.searchKey = params['key'];
     });
   
   }
@@ -180,9 +180,10 @@ export class HeaderComponent implements OnInit {
     });
   }
 
-
-
   searchProduct(){
-    this.router.navigateByUrl('search/'+ this.searchKey);
+    if(!this.searchKey){
+      this.searchKey = "";
+    }
+    this.router.navigateByUrl('products?key='+ this.searchKey);
   }
 }
