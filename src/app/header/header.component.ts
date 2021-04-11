@@ -186,4 +186,11 @@ export class HeaderComponent implements OnInit {
     }
     this.router.navigateByUrl('products?key='+ this.searchKey);
   }
+
+  searchCategory(category_name){
+    this.searchKey = "";
+    this.showSubCat = false;
+    this.showmenu = false;
+    this.router.navigate(['products'],  {queryParams : {category:category_name}});
+  }
 }

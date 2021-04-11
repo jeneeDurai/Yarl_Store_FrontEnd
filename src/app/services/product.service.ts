@@ -44,8 +44,8 @@ export class ProductService {
   }
 
 
-  searchProduct(searchKey):Observable<any>{
-    return this.http.get('/yarl-store-services/product/filter'+'?key='+searchKey)
+  searchProduct(params):Observable<any>{   
+    return this.http.get('/yarl-store-services/products',{params})
   }
 
 
