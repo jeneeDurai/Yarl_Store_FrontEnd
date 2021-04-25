@@ -393,6 +393,11 @@ input[type="radio"] {
 {
   color: red;
 }
+
+.error-text-product-empty
+{
+  font-size: 20px;
+}
 /* Importing Bootstrap SCSS file. */
 
 @media only screen and (max-width: 1400px) {

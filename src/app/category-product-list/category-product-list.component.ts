@@ -129,6 +129,7 @@ export class CategoryProductListComponent implements OnInit {
       category: [],
       brand: []
      }
+     this.products = [];
     this.productService.searchProduct(filter).subscribe(
       (response:any)=>{
         this.products = response.data;
