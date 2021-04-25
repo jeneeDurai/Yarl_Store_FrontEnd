@@ -28,3 +28,33 @@ label {
     float: right;
     color: #aaa;
 }
+
+::ng-deep .ngx-slider .ngx-slider-selection {
+    background: currentColor !important;
+}
+::ng-deep .ngx-slider .ngx-slider-pointer:after{
+    width: 6px !important;
+    height: 6px !important;
+    top: 7px !important;
+    left: 7px !important;
+}
+
+
+::ng-deep .ngx-slider .ngx-slider-pointer {
+    width: 20px !important;
+    height: 20px !important;
+    top: -9px !important;
+    background-color: currentColor !important;
+}
+
+
+::ng-deep .ngx-slider .ngx-slider-pointer.ngx-slider-active:after{
+    background-color: white !important;
+    border-radius: 0px !important;
+    border: none !important;
+}
+
+::ng-deep .ngx-slider .ngx-slider-bubble {
+    font-size: 14px !important;
+    content: '' !important;
+}

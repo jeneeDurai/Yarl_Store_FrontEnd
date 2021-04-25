@@ -43,46 +43,12 @@
 <div class="container-fluid" style="background-color: #fff; padding: 5%;">
     <div class="panel panel-default">
         <div class="panel-heading">
-             <h4>Reviews</h4>
+             <h4>Price</h4>
         </div>
-
-        <!-- <div class="panel-body">
-            <ul>
-                <li>
-                    <div class="checkboxes">
-                        <input id="fiveStar" type="checkbox" tabindex="1"/><label class="green-background" for="fiveStar">Five Stars
-                            <span class="count">(2)</span>
-                        </label>
-                    </div>
-
-                    <div class="checkboxes">
-                        <input id="fourStar" type="checkbox" tabindex="1"/><label class="green-background" for="fourStar">Four Stars
-                            <span class="count">(3)</span>
-                        </label>
-                    </div>
-
-                    <div class="checkboxes">
-                        <input id="threeStar" type="checkbox" tabindex="1"/><label class="green-background" for="threeStar">Three Stars
-                            <span class="count">(20)</span>
-                        </label>
-                    </div>
-
-                    <div class="checkboxes">
-                        <input id="twoStar" type="checkbox" tabindex="1"/><label class="green-background" for="twoStar">Two Stars
-                            <span class="count">(1)</span>
-                        </label>
-                    </div>
-
-                    <div class="checkboxes">
-                        <input id="others" type="checkbox" tabindex="1"/><label class="green-background" for="others">Others
-                            <span class="count">(10)</span>
-                        </label>
-                    </div>
-
-
-                </li>
-            </ul>
-        </div> -->
+        <div class="panel-body">
+            <!-- <ngx-slider [(value)]="minValue" [(highValue)]="maxValue" [options]="options" (valueChange)="priceChanged()"></ngx-slider> -->
+            <ngx-slider [(value)]="minValue" [(highValue)]="maxValue" [options]="options" (userChangeEnd)="priceChanged()"></ngx-slider>
+        </div>
     </div>
 </div>
 

@@ -62,6 +62,7 @@ import  { StarComponent } from './shared/star.component';
 
 import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { NgxSliderModule } from '@angular-slider/ngx-slider';
 
 @NgModule({
   declarations: [
@@ -100,6 +101,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
     NgxWebstorageModule.forRoot(),
     MatSelectModule,
     MatFormFieldModule,
+    NgxSliderModule,
     // RatingModule,
     // StarRatingModule,
     NgxImageZoomModule,
