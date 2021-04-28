@@ -51,20 +51,20 @@ export class CategoryFilterComponent implements OnInit {
   constructor(private categoryService:CategoryService,private dataService:DataService,private route: ActivatedRoute,private router:Router) { }
 
   ngOnInit(): void {
+    this.resetFilter();
    this.filterObj.key = this.route.snapshot.queryParams.key ? this.route.snapshot.queryParams.key : '';
    this.subscription = this.dataService.filterList.subscribe(
       (response:any) => {
-
         if(response){
+          this.resetFilter();
           this.categories = [];
           this.brands = []
-          console.log("message revieve to filter 111111");
           this.categories = response.category
           this.brands = response.brand
           this.filterObj.key = response.key ? response.key : ''
-          console.log(response);
-    
-          console.log("message revieve to filter 2222222");
+          if(this.route.snapshot.queryParams.category){
+            this.filterObj.category.push(this.route.snapshot.queryParams.category);
+          }
         }
       }
     )
@@ -87,8 +87,6 @@ export class CategoryFilterComponent implements OnInit {
     }else{
       this.filterObj.category = this.filterObj.category.filter(( name ) => name !== category_name);  
     }
-
-    console.log(this.filterObj.category)
     this.dataService.updateProduct(
       this.filterObj
     );
@@ -102,8 +100,6 @@ export class CategoryFilterComponent implements OnInit {
     }else{
       this.filterObj.brand = this.filterObj.brand.filter(( name ) => name !== brand_name);  
     }
-
-    console.log(this.filterObj.brand)
     this.dataService.updateProduct(
       this.filterObj
     );
@@ -111,8 +107,6 @@ export class CategoryFilterComponent implements OnInit {
 
 
   priceChanged(){
-    console.log("minnnnn" + this.minValue);
-    console.log("maxxxx" + this.maxValue);
     
     this.filterObj.minPrice = this.minValue
     this.filterObj.maxPrice = this.maxValue
@@ -120,5 +114,13 @@ export class CategoryFilterComponent implements OnInit {
     this.dataService.updateProduct(
       this.filterObj
     );
+  }
+
+  resetFilter(){
+    this.filterObj = {
+      key: "",
+      category: [],
+      brand : []
+    };
   }
 }

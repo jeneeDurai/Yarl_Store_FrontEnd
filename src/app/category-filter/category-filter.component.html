@@ -3,12 +3,12 @@
         <div class="panel-heading">
              <h4>Categories</h4>
         </div>
-
+        
         <div class="panel-body">
             <ul>
                 <li *ngFor = "let category of categories">
                     <div class="checkboxes">
-                        <input id="{{category.category_name}}"  (click)="setCategory($event,category.category_name);" type="checkbox" tabindex="1"/><label class="green-background" for="{{category.category_name}}">{{category.category_name}}
+                        <input id="{{category.category_name}}"  (click)="setCategory($event,category.category_name);" type="checkbox" tabindex="1" [checked]="true"/><label class="green-background" for="{{category.category_name}}">{{category.category_name}}
                             <span class="count">({{ category.count}})</span>
                         </label>
                     </div>
@@ -29,7 +29,7 @@
             <ul>
                 <li *ngFor = "let brand of brands">
                     <div class="checkboxes">
-                        <input id="{{brand.brands_name}}" (click)="setBrand($event,brand.brands_name);" type="checkbox" tabindex="1"/><label class="green-background" for="{{brand.brands_name}}">{{brand.brands_name}}
+                        <input id="{{brand.brands_name}}" (click)="setBrand($event,brand.brands_name);" type="checkbox" [checked]="true"/><label class="green-background" for="{{brand.brands_name}}">{{brand.brands_name}}
                             <span class="count">({{ brand.count }})</span>
                         </label>
                     </div>

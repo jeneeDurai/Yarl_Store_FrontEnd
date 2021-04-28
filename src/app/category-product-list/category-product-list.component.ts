@@ -63,9 +63,6 @@ export class CategoryProductListComponent implements OnInit {
 
     this.subscription = this.dataService.productList.subscribe(
       (response:any) => {
-        console.log("message revieve to product 111111");
-        console.log(response);
-        console.log("message revieve to product 222222");
         if(response){
           this.searchProduct(response,false);
         }
