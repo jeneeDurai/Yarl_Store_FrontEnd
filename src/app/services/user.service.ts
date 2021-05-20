@@ -12,7 +12,7 @@ import {LocalStorageService, SessionStorageService} from 'ngx-webstorage';
 export class UserService {
 
   registerApi = '/yarl-store-services/register';
-  loginApi = '/yarl-store-services/login';
+  loginApi = '/yarl-store-services/customer/login';
   getProfileApi = '/yarl-store-services/user/'
   isLogged:boolean = false;
   constructor(private http: HttpClient,private localStorage:LocalStorageService)
